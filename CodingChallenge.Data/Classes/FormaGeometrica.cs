@@ -7,6 +7,7 @@
  * TODO: Implementar Trapecio/Rectangulo, agregar otro idioma a reporting.
  * */
 
+using CodingChallenge.Data.Classes.Language;
 using CodingChallenge.Data.Emuns;
 using System;
 using System.Collections.Generic;
@@ -30,21 +31,20 @@ namespace CodingChallenge.Data.Classes
         public abstract decimal CalcularArea();
         public abstract decimal CalcularPerimetro();
 
-        public string Imprimir(List<FormaGeometrica> formas, Idioma idioma) 
+        public static string Imprimir(List<FormaGeometrica> formas, Idioma idioma) 
         {
+            var languageManager = new LanguageManager();
             var sb = new StringBuilder();
 
             if (!formas.Any())
             {
-                sb.Append(idioma == Idioma.Castellano
-                    ? $"<h1>Lista vacía de {NombrePlural}!</h1>"
-                    : $"<h1>Empty list of {NombrePlural}!</h1>");
+                sb.Append($"<h1>{languageManager.GetTranslation(idioma, "emptyListHeader")}</h1>");
             }
             else
             {
                 sb.Append(idioma == Idioma.Castellano
-                    ? $"<h1>Reporte de {NombrePlural}</h1>"
-                    : $"<h1>{NombrePlural} report</h1>");
+                    ? $"<h1>Lista vacía de !</h1>"
+                    : $"<h1>Lista vacía de !</h1>");
 
                 var contadorFormas = new Dictionary<Type, int>();
                 var areaTotal = new Dictionary<Type, decimal>();
@@ -72,7 +72,7 @@ namespace CodingChallenge.Data.Classes
                 }
 
                 sb.Append($"TOTAL:<br/>");
-                sb.Append($"{formas.Count} {(idioma == Idioma.Castellano ? NombrePlural : "shapes")} ");
+                sb.Append($"{formas.Count} {(idioma == Idioma.Castellano ? "" : "shapes")} ");
                 sb.Append($"{(idioma == Idioma.Castellano ? "Perimetro " : "Perimeter ")}{perimetroTotal.Values.Sum():#.##} ");
                 sb.Append($"Area {areaTotal.Values.Sum():#.##}");
             }

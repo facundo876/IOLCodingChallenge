@@ -1,0 +1,10 @@
+{
+  "Castellano": {
+    "emptyListHeader": "Lista vacía de formas!",
+    "reportHeader": "<h1>Reporte de {0}</h1>"
+  },
+  "Ingles": {
+    "emptyListHeader": "<h1>Empty list of shapes!</h1>",
+    "reportHeader": "<h1>{0} report</h1>"
+  }
+}
