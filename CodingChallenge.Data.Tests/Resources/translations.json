@@ -1,0 +1,57 @@
+{
+  "Castellano": {
+    "CultureInfo": "es-ES",
+    "emptyListHeader": "Lista vacía de formas!",
+    "reportHeader": "Reporte de Formas",
+    "shapesLabel": "formas",
+    "perimeterLabel": "Perimetro",
+    "areaLabel": "Area",
+    "Cuadrado": "Cuadrado",
+    "CuadradoPlural": "Cuadrados",
+    "Circulo": "Circulo",
+    "CirculoPlural": "Círculos",
+    "TrianguloEquilatero": "Triángulo",
+    "TrianguloEquilateroPlural": "Triángulos",
+    "Trapecio": "Trapecio",
+    "TrapecioPlural": "Trapecios",
+    "Rectangulo": "Rectangulo",
+    "RectanguloPlural": "Rectangulo"
+  },
+  "Ingles": {
+    "CultureInfo": "en-US",
+    "emptyListHeader": "Empty list of shapes!",
+    "reportHeader": "Shapes report",
+    "shapesLabel": "shapes",
+    "perimeterLabel": "Perimeter",
+    "areaLabel": "Area",
+    "Cuadrado": "Square",
+    "CuadradoPlural": "Squares",
+    "Circulo": "Circle",
+    "CirculoPlural": "Circles",
+    "TrianguloEquilatero": "Triangle",
+    "TrianguloEquilateroPlural": "Triangles",
+    "Trapecio": "Trapezium",
+    "TrapecioPlural": "Trapeziums",
+    "Rectangulo": "Rectangle",
+    "RectanguloPlural": "Rectangles"
+  },
+  "Frances": {
+    "CultureInfo": "fr-FR",
+    "emptyListHeader": "Liste vide de formes !",
+    "reportHeader": "Rapport sur les formes",
+    "shapesLabel": "formes",
+    "perimeterLabel": "Périmètre",
+    "areaLabel": "Surface",
+    "Cuadrado": "Carré",
+    "CuadradoPlural": "Carrés",
+    "Circulo": "Cercle",
+    "CirculoPlural": "Cercles",
+    "TrianguloEquilatero": "Triangle",
+    "TrianguloEquilateroPlural": "Triangles",
+    "Trapecio": "Trapèze",
+    "TrapecioPlural": "Trapèzes",
+    "Rectangulo": "Rectangle",
+    "RectanguloPlural": "Rectangles"
+  }
+}
+  

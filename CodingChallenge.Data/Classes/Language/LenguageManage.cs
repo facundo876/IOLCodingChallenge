@@ -24,7 +24,10 @@ namespace CodingChallenge.Data.Classes.Language
 
         private Dictionary<Idioma, Dictionary<string, string>> LoadTranslations()
         {
-            var jsonString = File.ReadAllText("translations.json");
+            string resourcesPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "Resources");
+            string jsonFilePath = Path.Combine(resourcesPath, "translations.json");
+
+            var jsonString = File.ReadAllText(jsonFilePath);
             return JsonSerializer.Deserialize<Dictionary<Idioma, Dictionary<string, string>>>(jsonString);
         }
 
