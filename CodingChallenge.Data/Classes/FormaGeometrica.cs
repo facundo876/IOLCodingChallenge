@@ -20,7 +20,6 @@ namespace CodingChallenge.Data.Classes
     {
         public abstract string NombreSingular { get; }
         public abstract string NombrePlural { get; }
-
         protected readonly decimal _lado;
 
         protected FormaGeometrica(decimal lado)
@@ -33,65 +32,69 @@ namespace CodingChallenge.Data.Classes
 
         public static string Imprimir(List<FormaGeometrica> formas, Idioma idioma) 
         {
-            var languageManager = new LanguageManager();
+            var languageManager = new LanguageManager(idioma);
             var sb = new StringBuilder();
 
             if (!formas.Any())
             {
-                sb.Append($"<h1>{languageManager.GetTranslation(idioma, "emptyListHeader")}</h1>");
+                sb.Append($"<h1>{languageManager.GetTranslation("emptyListHeader")}</h1>");
             }
             else
             {
-                sb.Append(idioma == Idioma.Castellano
-                    ? $"<h1>Lista vacía de !</h1>"
-                    : $"<h1>Lista vacía de !</h1>");
+                sb.Append($"<h1>{languageManager.GetTranslation("reportHeader")}</h1>");
 
-                var contadorFormas = new Dictionary<Type, int>();
-                var areaTotal = new Dictionary<Type, decimal>();
-                var perimetroTotal = new Dictionary<Type, decimal>();
+                var statistics = CalculateStatistics(formas);
+                sb.Append(FormatFormStatistics(statistics, languageManager));
+                sb.Append(FormatTotalStatistics(statistics, languageManager));
 
-                foreach (var forma in formas)
-                {
-                    var tipo = forma.GetType();
-                    if (!contadorFormas.ContainsKey(tipo))
-                    {
-                        contadorFormas[tipo] = 0;
-                        areaTotal[tipo] = 0m;
-                        perimetroTotal[tipo] = 0m;
-                    }
-
-                    contadorFormas[tipo]++;
-                    areaTotal[tipo] += forma.CalcularArea();
-                    perimetroTotal[tipo] += forma.CalcularPerimetro();
-                }
-
-                foreach (var kvp in contadorFormas)
-                {
-                    var tipoForma = kvp.Key;
-                    sb.Append(ObtenerLinea(kvp.Value, areaTotal[tipoForma], perimetroTotal[tipoForma], tipoForma, idioma));
-                }
-
-                sb.Append($"TOTAL:<br/>");
-                sb.Append($"{formas.Count} {(idioma == Idioma.Castellano ? "" : "shapes")} ");
-                sb.Append($"{(idioma == Idioma.Castellano ? "Perimetro " : "Perimeter ")}{perimetroTotal.Values.Sum():#.##} ");
-                sb.Append($"Area {areaTotal.Values.Sum():#.##}");
             }
 
             return sb.ToString();
         }
 
-        private static string ObtenerLinea(int cantidad, decimal area, decimal perimetro, Type tipo, Idioma idioma)
-        {
-            if (cantidad > 0)
-            {
-                var nombre = idioma == Idioma.Castellano ? (string)tipo.GetProperty("NombreSingular").GetValue(null) : (string)tipo.GetProperty("NombrePlural").GetValue(null);
-                var areaTexto = idioma == Idioma.Castellano ? "Área" : "Area";
-                var perimetroTexto = idioma == Idioma.Castellano ? "Perímetro" : "Perimeter";
 
-                return $"{cantidad} {nombre} | {areaTexto} {area:#.##} | {perimetroTexto} {perimetro:#.##} <br/>";
+        private static Dictionary<Type, FormStatistics> CalculateStatistics(List<FormaGeometrica> formas)
+        {
+            var statistics = new Dictionary<Type, FormStatistics>();
+
+            foreach (var forma in formas)
+            {
+                var tipo = forma.GetType();
+                if (!statistics.ContainsKey(tipo))
+                {
+                    statistics[tipo] = new FormStatistics();
+                }
+
+                statistics[tipo].IncrementCounts(forma.CalcularArea(), forma.CalcularPerimetro());
             }
 
-            return string.Empty;
+            return statistics;
+        }
+
+        private static string FormatFormStatistics(Dictionary<Type, FormStatistics> statistics, LanguageManager languageManager)
+        {
+            var sb = new StringBuilder();
+
+            foreach (var kvp in statistics)
+            {
+                var tipoForma = kvp.Key;
+                sb.Append(kvp.Value.FormatFormStatistics(tipoForma, languageManager));
+            }
+
+            return sb.ToString();
+        }
+
+        private static string FormatTotalStatistics(Dictionary<Type, FormStatistics> statistics, LanguageManager languageManager)
+        {
+            var FormCounts = statistics.Values.Sum(stat => stat.FormCount);
+            var totalPerimeter = statistics.Values.Sum(stat => stat.PerimetroTotal);
+            var totalArea = statistics.Values.Sum(stat => stat.AreaTotal);
+
+            var shapesLabel = languageManager.GetTranslation("shapesLabel");
+            var perimeterLabel = languageManager.GetTranslation("perimeterLabel");
+            var areaLabel = languageManager.GetTranslation("areaLabel");
+
+            return $"<br/>TOTAL:<br/>{FormCounts} {shapesLabel} {perimeterLabel} {totalPerimeter:#.##} {areaLabel} {totalArea:#.##}";
         }
     }
 }

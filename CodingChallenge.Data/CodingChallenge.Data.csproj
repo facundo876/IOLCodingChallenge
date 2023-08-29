@@ -60,6 +60,7 @@
     <Compile Include="Classes\Circulo.cs" />
     <Compile Include="Classes\Cuadrado.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
+    <Compile Include="Classes\FormStatistics.cs" />
     <Compile Include="Classes\Language\LenguageManage.cs" />
     <Compile Include="Emuns\Idioma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

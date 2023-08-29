@@ -13,9 +13,11 @@ namespace CodingChallenge.Data.Classes.Language
     public class LanguageManager
     {
         private Dictionary<Idioma, Dictionary<string, string>> translations;
+        private Idioma currentIdioma;
 
-        public LanguageManager()
+        public LanguageManager(Idioma idioma)
         {
+            currentIdioma = idioma;
             translations = LoadTranslations();
         }
 
@@ -25,11 +27,11 @@ namespace CodingChallenge.Data.Classes.Language
             return JsonSerializer.Deserialize<Dictionary<Idioma, Dictionary<string, string>>>(jsonString);
         }
 
-        public string GetTranslation(Idioma idioma, string key, params object[] args)
+        public string GetTranslation(string key, params object[] args)
         {
-            if (translations.ContainsKey(idioma) && translations[idioma].ContainsKey(key))
+            if (translations.ContainsKey(currentIdioma) && translations[currentIdioma].ContainsKey(key))
             {
-                return string.Format(translations[idioma][key], args);
+                return string.Format(translations[currentIdioma][key], args);
             }
             return string.Empty;
         }
