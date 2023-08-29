@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Globalization;
 
 namespace CodingChallenge.Data.Classes.Language
 {
@@ -34,6 +35,14 @@ namespace CodingChallenge.Data.Classes.Language
                 return string.Format(translations[currentIdioma][key], args);
             }
             return string.Empty;
+        }
+
+        public CultureInfo GetCultureInfo()
+        {
+            var cultureInfo = new CultureInfo("es-ES");
+            cultureInfo.NumberFormat.NumberDecimalSeparator = ",";
+            cultureInfo.NumberFormat.NumberGroupSeparator = ".";
+            return cultureInfo;
         }
     }
 }

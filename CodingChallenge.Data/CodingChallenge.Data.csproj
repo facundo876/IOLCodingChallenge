@@ -62,6 +62,7 @@
     <Compile Include="Classes\FormaGeometrica.cs" />
     <Compile Include="Classes\FormStatistics.cs" />
     <Compile Include="Classes\Language\LenguageManage.cs" />
+    <Compile Include="Classes\TrianguloEquilatero.cs" />
     <Compile Include="Emuns\Idioma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

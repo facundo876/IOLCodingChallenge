@@ -11,6 +11,7 @@ using CodingChallenge.Data.Classes.Language;
 using CodingChallenge.Data.Emuns;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -94,7 +95,9 @@ namespace CodingChallenge.Data.Classes
             var perimeterLabel = languageManager.GetTranslation("perimeterLabel");
             var areaLabel = languageManager.GetTranslation("areaLabel");
 
-            return $"<br/>TOTAL:<br/>{FormCounts} {shapesLabel} {perimeterLabel} {totalPerimeter:#.##} {areaLabel} {totalArea:#.##}";
+            var cultureInfo = languageManager.GetCultureInfo();
+
+            return $"TOTAL:<br/>{FormCounts} {shapesLabel} {perimeterLabel} {totalPerimeter.ToString("#.##", cultureInfo)} {areaLabel} {totalArea.ToString("#.##", cultureInfo)}";
         }
     }
 }

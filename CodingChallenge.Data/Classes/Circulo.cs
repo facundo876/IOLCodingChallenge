@@ -11,7 +11,9 @@ namespace CodingChallenge.Data.Classes
         public override string NombreSingular => "Círculo";
         public override string NombrePlural => "Círculos";
 
-        public Circulo(decimal radio) : base(radio) { }
+        public Circulo(decimal radio) 
+            : base(radio) 
+        { }
 
         public override decimal CalcularArea() => (decimal)Math.PI * (_lado / 2) * (_lado / 2);
 

@@ -31,7 +31,9 @@ namespace CodingChallenge.Data.Classes
             var perimeterLabel = languageManager.GetTranslation("perimeterLabel");
             var areaLabel = languageManager.GetTranslation("areaLabel");
 
-            return $"{FormCount} {formaName} | {areaLabel} {AreaTotal:#.##} | {perimeterLabel} {PerimetroTotal:#.##} ";
+            var cultureInfo = languageManager.GetCultureInfo();
+
+            return $"{FormCount} {formaName} | {areaLabel} {AreaTotal.ToString("#.##", cultureInfo)} | {perimeterLabel} {PerimetroTotal.ToString("#.##", cultureInfo)} <br/>";
         }
     }
 }
