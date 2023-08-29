@@ -19,11 +19,11 @@ namespace CodingChallenge.Data.Classes
 {
     public abstract class FormaGeometrica
     {
-        protected readonly decimal _lado;
+        protected Dictionary<string, decimal> Medidas { get; } = new Dictionary<string, decimal>();
 
-        protected FormaGeometrica(decimal lado)
+        protected FormaGeometrica(Dictionary<string, decimal> medidas)
         {
-            _lado = lado;
+            Medidas = medidas;
         }
 
         public abstract decimal CalcularArea();
