@@ -120,5 +120,36 @@ namespace CodingChallenge.Data.Tests
 
             Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Area 32 | Perimetro 31 <br/>TOTAL:<br/>1 formas Perimetro 31 Area 32", resumen);
         }
+
+        [TestCase]
+        public void TestResumenListaConMasCuadradosYUnRectangulo()
+        {
+            var formas = new List<FormaGeometrica>
+            {
+                new Cuadrado(5),
+                new Cuadrado(1),
+                new Cuadrado(3),
+                new Rectangulo(10, 6)
+            };
+
+            var resumen = FormaGeometrica.Imprimir(formas, Idioma.Frances);
+
+            Assert.AreEqual(
+                "<h1>Rapport sur les formes</h1>3 Carrés | Surface 35 | Périmètre 36 <br/>1 Rectangle | Surface 60 | Périmètre 32 <br/>TOTAL:<br/>4 formes Périmètre 68 Surface 95",
+                resumen);
+        }
+
+        [TestCase]
+        public void TestResumenRectanguloSolo()
+        {
+            var formas = new List<FormaGeometrica>
+            {
+                new Rectangulo(10, 6)
+            };
+
+            var resumen = FormaGeometrica.Imprimir(formas, Idioma.Frances);
+
+            Assert.AreEqual("<h1>Rapport sur les formes</h1>1 Rectangle | Surface 60 | Périmètre 32 <br/>TOTAL:<br/>1 formes Périmètre 32 Surface 60", resumen);
+        }
     }
 }

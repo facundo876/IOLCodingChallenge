@@ -9,6 +9,7 @@ namespace CodingChallenge.Data.Emuns
     public enum Idioma
     {
         Castellano,
-        Ingles 
+        Ingles,
+        Frances
     }
 }
