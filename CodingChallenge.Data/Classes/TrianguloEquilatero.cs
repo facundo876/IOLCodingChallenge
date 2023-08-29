@@ -8,7 +8,7 @@ namespace CodingChallenge.Data.Classes
 {
     public class TrianguloEquilatero : FormaGeometrica
     {
-        private decimal Lado;
+        private decimal Lado { get; set; }
         public TrianguloEquilatero(decimal lado) 
         { 
             this.Lado = lado;

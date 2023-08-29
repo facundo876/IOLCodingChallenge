@@ -8,7 +8,7 @@ namespace CodingChallenge.Data.Classes
 {
     public class Circulo : FormaGeometrica
     {
-        private readonly decimal Radio;
+        private decimal Radio { get; set; }
 
         public Circulo(decimal radio) 
         {

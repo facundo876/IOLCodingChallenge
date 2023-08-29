@@ -8,7 +8,7 @@ namespace CodingChallenge.Data.Classes
 {
     public class Cuadrado : FormaGeometrica
     {
-        private decimal Lado;
+        private decimal Lado { get; set; }
 
         public Cuadrado(decimal lado) 
         {
