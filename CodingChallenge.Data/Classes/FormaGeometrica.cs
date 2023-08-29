@@ -19,12 +19,7 @@ namespace CodingChallenge.Data.Classes
 {
     public abstract class FormaGeometrica
     {
-        protected readonly decimal _lado;
-
-        protected FormaGeometrica(decimal lado)
-        {
-            _lado = lado;
-        }
+        protected FormaGeometrica(){ }
 
         public abstract decimal CalcularArea();
         public abstract decimal CalcularPerimetro();

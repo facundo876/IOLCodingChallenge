@@ -8,18 +8,13 @@ namespace CodingChallenge.Data.Classes
 {
     public class TrianguloEquilatero : FormaGeometrica
     {
+        private decimal Lado;
         public TrianguloEquilatero(decimal lado) 
-            : base(lado) 
-        { }
-
-        public override decimal CalcularArea()
-        {
-            return ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
+        { 
+            this.Lado = lado;
         }
 
-        public override decimal CalcularPerimetro()
-        {
-            return _lado * 3;
-        }
+        public override decimal CalcularArea() => ((decimal)Math.Sqrt(3) / 4) * Lado * Lado;
+        public override decimal CalcularPerimetro() => Lado * 3;
     }
 }

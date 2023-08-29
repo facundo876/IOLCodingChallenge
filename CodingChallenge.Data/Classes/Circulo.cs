@@ -8,12 +8,15 @@ namespace CodingChallenge.Data.Classes
 {
     public class Circulo : FormaGeometrica
     {
+        private readonly decimal Radio;
+
         public Circulo(decimal radio) 
-            : base(radio) 
-        { }
+        {
+            this.Radio = radio;
+        }
 
-        public override decimal CalcularArea() => (decimal)Math.PI * (_lado / 2) * (_lado / 2);
+        public override decimal CalcularArea() => (decimal)Math.PI * (Radio / 2) * (Radio / 2);
 
-        public override decimal CalcularPerimetro() => (decimal)Math.PI * _lado;
+        public override decimal CalcularPerimetro() => (decimal)Math.PI * Radio;
     }
 }

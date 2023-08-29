@@ -8,12 +8,15 @@ namespace CodingChallenge.Data.Classes
 {
     public class Cuadrado : FormaGeometrica
     {
+        private decimal Lado;
+
         public Cuadrado(decimal lado) 
-            : base(lado) 
-        { }
+        {
+            this.Lado = lado;
+        }
 
-        public override decimal CalcularArea() => _lado * _lado;
+        public override decimal CalcularArea() => Lado * Lado;
 
-        public override decimal CalcularPerimetro() => _lado * 4;
+        public override decimal CalcularPerimetro() => Lado * 4;
     }
 }
