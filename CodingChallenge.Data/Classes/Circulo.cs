@@ -8,9 +8,6 @@ namespace CodingChallenge.Data.Classes
 {
     public class Circulo : FormaGeometrica
     {
-        public override string NombreSingular => "Círculo";
-        public override string NombrePlural => "Círculos";
-
         public Circulo(decimal radio) 
             : base(radio) 
         { }
