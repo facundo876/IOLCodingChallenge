@@ -8,9 +8,6 @@ namespace CodingChallenge.Data.Classes
 {
     public class Cuadrado : FormaGeometrica
     {
-        public override string NombreSingular => "Cuadrado";
-        public override string NombrePlural => "Cuadrados";
-
         public Cuadrado(decimal lado) 
             : base(lado) 
         { }

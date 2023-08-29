@@ -8,9 +8,6 @@ namespace CodingChallenge.Data.Classes
 {
     public class TrianguloEquilatero : FormaGeometrica
     {
-        public override string NombreSingular => "Triángulo";
-        public override string NombrePlural => "Triángulos";
-
         public TrianguloEquilatero(decimal lado) 
             : base(lado) 
         { }

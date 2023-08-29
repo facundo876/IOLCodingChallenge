@@ -19,8 +19,6 @@ namespace CodingChallenge.Data.Classes
 {
     public abstract class FormaGeometrica
     {
-        public abstract string NombreSingular { get; }
-        public abstract string NombrePlural { get; }
         protected readonly decimal _lado;
 
         protected FormaGeometrica(decimal lado)
